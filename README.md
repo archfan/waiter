@@ -38,6 +38,7 @@ Description=Seafile
 After=network.target
 
 [Service]
+User=seafile
 Type=simple
 ExecStart=/usr/bin/firejail --profile=/etc/firejail/server.profile --name=seafile -- waiter.py -c /etc/waiter/seafile.conf
 ExecStop=/usr/bin/firejail --shutdown=${MAINPID}
