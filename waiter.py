@@ -103,6 +103,7 @@ def signal_handler(signal, frame):
 
 def main():
     logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger()
 
     parser = argparse.ArgumentParser(description="Run startup commands. Wait for SIGTERM. Run shutdown commands.")
     parser.add_argument('-c', '--config', help="configuration file" )
@@ -127,6 +128,7 @@ def main():
     # Starts processes
     start_all()
 
+    logger.info('waiting for SIGTERM...')
     while True:
         signal.pause()
 
